@@ -1,280 +1,298 @@
-var vetorObj = [
+//Exibir produtos Feminino
+let vetor = [
   {
-    cod: '1',
-    preço: '139,90',
-    produto: 'Blusa xadrez',
+    codigo: '1',
+    nome: 'Blusa Xadrez',
+    valor: '139,90',
     imagem: '../assets/img/feminino/1.jpg',
     categoria: 'feminino',
   },
   {
-    cod: '2',
-    preço: '218,90',
-    produto: 'Casaco casual',
+    codigo: '2',
+    nome: 'Casaco Casual',
+    valor: '218,80',
     imagem: '../assets/img/feminino/2.jpg',
     categoria: 'feminino',
   },
   {
-    cod: '3',
-    preço: '89,90',
-    produto: 'Camisa social',
+    codigo: '3',
+    nome: 'Camisa Social',
+    valor: '89,90',
     imagem: '../assets/img/feminino/3.jpg',
     categoria: 'feminino',
   },
   {
-    cod: '4',
-    preço: '111,50',
-    produto: 'Camisa Bege',
+    codigo: '4',
+    nome: 'Camisa Bege',
+    valor: '56,50',
     imagem: '../assets/img/feminino/4.jpg',
     categoria: 'feminino',
   },
   {
-    cod: '5',
-    preço: '35,40',
-    produto: 'Blusa animal print',
+    codigo: '5',
+    nome: 'Blusa Animal Print',
+    valor: '79,90',
     imagem: '../assets/img/feminino/5.jpg',
     categoria: 'feminino',
   },
   {
-    cod: '6',
-    preço: '140,50',
-    produto: 'Camisa de escura',
+    codigo: '6',
+    nome: 'Blusa Preta',
+    valor: '89,90',
     imagem: '../assets/img/feminino/6.jpg',
     categoria: 'feminino',
   },
 
+  //Exibir produtos Masculino
   {
-    cod: '1',
-    preço: '80,90',
-    produto: 'Casaco Xadrez',
+    codigo: '7',
+    nome: 'Camisa Xadrez',
+    valor: '56,40',
     imagem: '../assets/img/masculino/1.jpg',
     categoria: 'masculino',
   },
   {
-    cod: '2',
-    preço: '131,20',
-    produto: 'Camiseta preta',
+    codigo: '8',
+    nome: 'Camisa Fechada',
+    valor: '45,40',
     imagem: '../assets/img/masculino/2.jpg',
     categoria: 'masculino',
   },
   {
-    cod: '3',
-    preço: '110,00',
-    produto: 'Camisa Morty',
+    codigo: '9',
+    nome: 'Camisa Estampada',
+    valor: '55,40',
     imagem: '../assets/img/masculino/3.jpg',
     categoria: 'masculino',
   },
   {
-    cod: '4',
-    preço: '120,00',
-    produto: 'Blusa cinza',
+    codigo: '10',
+    nome: 'Camisa Polo',
+    valor: '85,40',
     imagem: '../assets/img/masculino/4.jpg',
     categoria: 'masculino',
   },
   {
-    cod: '5',
-    preço: '178,20',
-    produto: 'Camisa tropical',
+    codigo: '11',
+    nome: 'Camisa Estampada',
+    valor: '65,40',
     imagem: '../assets/img/masculino/5.jpg',
     categoria: 'masculino',
   },
   {
-    cod: '6',
-    preço: '129,00',
-    produto: 'Camisa polo',
+    codigo: '12',
+    nome: 'Camisa Social',
+    valor: '85,40',
     imagem: '../assets/img/masculino/6.jpg',
     categoria: 'masculino',
   },
 
+  //Exibir produtos Infantil
   {
-    cod: '1',
-    preço: '95,20',
-    produto: 'Camisa Lylo',
+    codigo: '13',
+    nome: 'Camisa Lilo',
+    valor: '15,40',
     imagem: '../assets/img/infantil/1.jpg',
     categoria: 'infantil',
   },
   {
-    cod: '2',
-    preço: '174,00',
-    produto: 'Camisa Sony',
+    codigo: '14',
+    nome: 'Camisa Sonic',
+    valor: '25,40',
     imagem: '../assets/img/infantil/2.jpg',
     categoria: 'infantil',
   },
   {
-    cod: '3',
-    preço: '127,20',
-    produto: 'Vestido vermelho',
+    codigo: '15',
+    nome: 'Vestido Xadrez',
+    valor: '85,40',
     imagem: '../assets/img/infantil/3.jpg',
     categoria: 'infantil',
   },
   {
-    cod: '4',
-    preço: '189,00',
-    produto: 'Blusa Dino',
+    codigo: '16',
+    nome: 'Camisa Dinossauro',
+    valor: '45,40',
     imagem: '../assets/img/infantil/4.jpg',
     categoria: 'infantil',
   },
   {
-    cod: '5',
-    preço: '199,00',
-    produto: 'Casoco Minnie',
+    codigo: '17',
+    nome: 'Casaco da Minie',
+    valor: '85,40',
     imagem: '../assets/img/infantil/5.jpg',
     categoria: 'infantil',
   },
   {
-    cod: '6',
-    preço: '119,00',
-    produto: 'Vestido animal print',
+    codigo: '18',
+    nome: 'Vistido Animal Print',
+    valor: '65,40',
     imagem: '../assets/img/infantil/6.jpg',
     categoria: 'infantil',
   },
 ];
 
-function produtos() {
-  var content = '';
-  for (var i = 0; i < vetorObj.length; i++) {
-    var produto = vetorObj[i];
-    content += '<div class="card" style="width: 17rem;">';
-    content +=
-      '<img src="' +
-      produto.imagem +
-      '" class="card-img-top" alt="Imagem ' +
-      produto.cod +
-      '">';
-    content += '<div class="card-body">';
-    content += '<h5 class="card-title">' + produto.produto + '</h5>';
-    content += '<p class="card-text">' + produto.preço + '</p>';
-    content +=
-      '<input id="buttonAdicionar" class="btn btn-primary" type="button" value="Adicionar"  onclick="adicionarAoCarrinho(' +
-      i +
-      ')">';
-    content += '</div>';
-    content += '</div>';
-  }
-  document.getElementById('produtos-container').innerHTML = content;
-}
+//Produtos selecionados
+let carrinho = [];
 
-function pageFeminino() {
-  var content = '';
-  for (var i = 0; i < vetorObj.length; i++) {
-    var produto = vetorObj[i];
-    if (produto.categoria === 'feminino') {
-      content += '<div class="card" style="width: 17rem;">';
-      content +=
-        '<img src="' +
-        produto.imagem +
-        '" class="card-img-top" alt="Imagem ' +
-        produto.cod +
-        '">';
-      content += '<div class="card-body">';
-      content += '<h5 class="card-title">' + produto.produto + '</h5>';
-      content += '<p class="card-text">' + produto.preço + '</p>';
-      content +=
-        '<input id="buttonAdicionar" class="btn btn-primary" type="button" value="Adicionar"  onclick="adicionarAoCarrinho(' +
-        i +
-        ')">';
-      content += '</div>';
-      content += '</div>';
+//Listar produtos
+let listar = (selecao) => {
+  let produtos = document.getElementById('produtos');
+
+  produtos.innerHTML = '';
+
+  for (let i = 0; i < vetor.length; i++) {
+    if (selecao == vetor[i].categoria || selecao == 'produtos') {
+      //Criar coluna
+      let coluna = document.createElement('div');
+
+      coluna.classList.add('col-3');
+
+      //Criar imagem
+      let imagem = document.createElement('img');
+      imagem.src = vetor[i].imagem;
+      imagem.classList.add('img-fluid');
+
+      //Criar nome produto
+      let nomeProduto = document.createElement('p');
+      nomeProduto.innerText = vetor[i].nome;
+
+      //Criar valor produto
+      let valorProduto = document.createElement('p');
+      valorProduto.innerText = vetor[i].valor;
+
+      //Criar botão adicionar
+      let botao = document.createElement('button');
+      botao.classList.add('btn', 'btn-primary');
+      botao.innerText = 'Adicionar';
+      botao.addEventListener('click', () => {
+        adicionar(vetor[i].codigo);
+      });
+
+      //Adicionar imagem e informações do produto na coluna
+      coluna.appendChild(imagem);
+      coluna.appendChild(nomeProduto);
+      coluna.appendChild(valorProduto);
+      coluna.appendChild(botao);
+
+      produtos.appendChild(coluna);
     }
   }
-  document.getElementById('produtos-container').innerHTML = content;
-}
+};
 
-function pageInfantil() {
-  var content = '';
-  for (var i = 0; i < vetorObj.length; i++) {
-    var produto = vetorObj[i];
-    if (produto.categoria === 'infantil') {
-      content += '<div class="card" style="width: 17rem;">';
-      content +=
-        '<img src="' +
-        produto.imagem +
-        '" class="card-img-top" alt="Imagem ' +
-        produto.cod +
-        '">';
-      content += '<div class="card-body">';
-      content += '<h5 class="card-title">' + produto.produto + '</h5>';
-      content += '<p class="card-text">' + produto.preço + '</p>';
-      content +=
-        '<input id="buttonAdicionar" class="btn btn-primary" type="button" value="Adicionar"  onclick="adicionarAoCarrinho(' +
-        i +
-        ')">';
-      content += '</div>';
-      content += '</div>';
-    }
-  }
-  document.getElementById('produtos-container').innerHTML = content;
-}
+//Adicionar produtos carrinho de compras
+let adicionar = (codigo) => {
+  //Verificar se possui o código no carrinho de compras
+  let indice = carrinho.findIndex((obj) => {
+    return obj.codigo == codigo;
+  });
 
-function pageMasculino() {
-  var content = '';
-  for (var i = 0; i < vetorObj.length; i++) {
-    var produto = vetorObj[i];
-    if (produto.categoria === 'masculino') {
-      content += '<div class="card" style="width: 17rem;">';
-      content +=
-        '<img src="' +
-        produto.imagem +
-        '" class="card-img-top" alt="Imagem ' +
-        produto.cod +
-        '">';
-      content += '<div class="card-body">';
-      content += '<h5 class="card-title">' + produto.produto + '</h5>';
-      content += '<p class="card-text">' + produto.preço + '</p>';
-      content +=
-        '<input id="buttonAdicionar" class="btn btn-primary" type="button" value="Adicionar" onclick="adicionarAoCarrinho(' +
-        i +
-        ')" >';
-      content += '</div>';
-      content += '</div>';
-    }
-  }
-  document.getElementById('produtos-container').innerHTML = content;
-}
-
-// Carrinho
-
-var produtosCarrinho = [];
-
-function adicionarAoCarrinho(index) {
-  var produto = vetorObj[index];
-  var itemCarrinho = produtosCarrinho.find(
-    (item) => item.produto === produto.produto,
-  );
-
-  if (itemCarrinho) {
-    itemCarrinho.quantidade++;
+  if (indice == -1) {
+    let obj = { codigo: codigo, quantidade: 1 };
+    carrinho.push(obj);
   } else {
-    produto.quantidade = 1;
-    produtosCarrinho.push(produto);
+    let obj = carrinho[indice];
+    obj.quantidade += 1;
+    carrinho[indice] = obj;
   }
 
-  // console.log("Produto adicionado ao carrinho: " + produto.produto);
-}
-function carrinho() {
-  var carrinhoCompras = document.getElementById('compras');
-  carrinhoCompras.innerHTML = '';
+  itensSelecionados();
+};
 
-  if (produtosCarrinho.length === 0) {
-    carrinhoCompras.innerHTML = 'O carrinho está vazio.';
-  } else {
-    carrinhoCompras.innerHTML = '<div class="card">';
-    for (var i = 0; i < produtosCarrinho.length; i++) {
-      carrinhoCompras.innerHTML +=
-        "<div class='card_Carrinho'>" +
-        '<img src="' +
-        produtosCarrinho[i].imagem +
-        '" class="card-img-top" style="width: 10rem" alt="Imagem">' +
-        '<h5 class="card-title">' +
-        produtosCarrinho[i].produto +
-        '</h5>' +
-        '<p class="card-text">' +
-        'R$' +
-        produtosCarrinho[i].preço +
-        '</p>' +
-        'Quantidade: ' +
-        produtosCarrinho[i].quantidade +
-        '</div>';
+//Listar itens selecionados carrinho de compras
+let itensSelecionados = () => {
+  let exibirCarrinho = document.getElementById('exibirCarrinho');
+
+  exibirCarrinho.innerHTML = '';
+
+  for (let i = 0; i < carrinho.length; i++) {
+    let produto = retornarProduto(carrinho[i].codigo);
+
+    //Criar uma coluna
+    let coluna = document.createElement('div');
+    coluna.classList.add('col-6');
+
+    //Criar a imagem
+    let imagem = document.createElement('img');
+    imagem.src = produto.imagem;
+    imagem.classList.add('img-fluid');
+
+    //Criar nome produto
+    let nomeProduto = document.createElement('p');
+    nomeProduto.innerText = produto.nome;
+
+    //Criar valor produto
+    let valorProduto = document.createElement('p');
+    valorProduto.innerText = 'R$' + produto.valor;
+
+    //Criar quantidade produto
+    let quantidadeProduto = document.createElement('p');
+    quantidadeProduto.innerText = 'Quantidade:' + carrinho[i].quantidade;
+
+    //Adicionar imagem e informações do produto na coluna
+    coluna.appendChild(imagem);
+    coluna.appendChild(nomeProduto);
+    coluna.appendChild(valorProduto);
+    coluna.appendChild(quantidadeProduto);
+
+    exibirCarrinho.appendChild(coluna);
+  }
+};
+
+//Retornar objeto do vetor através do código do produto
+let retornarProduto = (codigo) => {
+  let indice = vetor.findIndex((obj) => {
+    return obj.codigo == codigo;
+  });
+
+  return vetor[indice];
+};
+
+//Pesquisar produtos
+let pesquisar = () => {
+  let termo = document.getElementById('termo').value;
+
+  let produtos = document.getElementById('produtos');
+
+  produtos.innerHTML = '';
+
+  for (let i = 0; i < vetor.length; i++) {
+    if (
+      vetor[i].nome.toLocaleLowerCase().indexOf(termo.toLocaleLowerCase()) != -1
+    ) {
+      //Criar coluna
+      let coluna = document.createElement('div');
+
+      coluna.classList.add('col-3');
+
+      //Criar imagem
+      let imagem = document.createElement('img');
+      imagem.src = vetor[i].imagem;
+      imagem.classList.add('img-fluid');
+
+      //Criar nome produto
+      let nomeProduto = document.createElement('p');
+      nomeProduto.innerText = vetor[i].nome;
+
+      //Criar valor produto
+      let valorProduto = document.createElement('p');
+      valorProduto.innerText = vetor[i].valor;
+
+      //Criar botão adicionar
+      let botao = document.createElement('button');
+      botao.classList.add('btn', 'btn-primary');
+      botao.innerText = 'Adicionar';
+      botao.addEventListener('click', () => {
+        adicionar(vetor[i].codigo);
+      });
+
+      //Adicionar imagem e informações do produto na colunaparágrafo na coluna
+      coluna.appendChild(imagem);
+      coluna.appendChild(nomeProduto);
+      coluna.appendChild(valorProduto);
+      coluna.appendChild(botao);
+
+      produtos.appendChild(coluna);
     }
-    carrinhoCompras.innerHTML += '</div>';
   }
-}
+};
